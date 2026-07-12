@@ -1,0 +1,15 @@
+name: Manual #ワークフロー名
+on: # トリガーの種類
+  workflow_dispatch: #手動トリガー
+    inputs:
+      greeting: #　入力パラメータ名
+        type: string #データ型（文字列）
+        defalut: Hello #入力パラメータのデフォルト値
+        required: true #入力パラメータの必須フラグ
+        description: A cheerful world #入力パラメータの概要
+jobs: #ジョブの定義
+  run: #ステップ名(指定方法はrunキーとusesキーの2種類あり、runキーでは任意のシェルコマンドを実行できる)
+    runs-on: ubuntu-latest #実行環境の指定
+    steps: #ステップの定義
+      - run: echo "${{ inputs.greeting }}" #入力パラメータ[greeting]の参照
+      
